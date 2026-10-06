@@ -1,0 +1,10 @@
+Sample interview guide
+
+The backend engineering interview lasts 45 minutes. Candidates should prepare to discuss
+Python, REST APIs, vector search, and relational databases.
+
+The take-home assignment requires a document ingestion API and a conversational RAG API.
+Accepted file formats are PDF and TXT. The assistant should cite document sources in its answers.
+
+Interview bookings collect the candidate's name, email, date, and time. A booking is saved
+only after the candidate confirms the details. The booking timezone is Asia/Kathmandu.

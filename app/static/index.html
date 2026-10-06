@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Raksha - Palm Mind</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>Raksha - Palm Mind</h1>
+          <p>Document questions & interview booking</p>
+        </div>
+        <a href="/docs" target="_blank" rel="noopener">Reference ↗</a>
+      </header>
+      <div class="layout">
+        <section class="panel">
+          <h2>Documents</h2>
+          <p class="hint">PDF with text or TXT, up to 5 MB.</p>
+          <form id="upload-form">
+            <label for="file">File</label>
+            <input id="file" name="file" type="file" accept=".pdf,.txt" required />
+            <label for="strategy">Split text</label>
+            <select id="strategy" name="strategy">
+              <option value="recursive">By paragraphs</option>
+              <option value="fixed">By length</option>
+            </select>
+            <div class="pair">
+              <div>
+                <label for="chunk-size">Length <span>characters</span></label
+                ><input
+                  id="chunk-size"
+                  name="chunk_size"
+                  type="number"
+                  value="1000"
+                  min="200"
+                  max="2000"
+                  required
+                />
+              </div>
+              <div>
+                <label for="overlap">Overlap</label
+                ><input
+                  id="overlap"
+                  name="chunk_overlap"
+                  type="number"
+                  value="150"
+                  min="0"
+                  max="500"
+                  required
+                />
+              </div>
+            </div>
+            <button type="submit" class="primary">Upload document</button>
+          </form>
+          <p id="upload-status" class="status" role="status"></p>
+          <h3>Use documents</h3>
+          <p class="hint">Choose documents, or leave unchecked to use all.</p>
+          <div id="documents" class="document-list"><p class="hint">No uploads yet.</p></div>
+        </section>
+        <section class="panel chat-panel">
+          <div class="section-heading">
+            <h2>Conversation</h2>
+            <button id="new-session" type="button">New session</button>
+          </div>
+          <p class="hint">Ask about a document, or say “I’d like to book an interview.”</p>
+          <div
+            id="messages"
+            class="messages"
+            role="log"
+            aria-label="Conversation"
+            aria-live="polite"
+          >
+            <p class="empty">Your conversation will appear here.</p>
+          </div>
+          <section id="booking" class="booking" hidden aria-label="Booking details">
+            <h3>Interview details</h3>
+            <dl id="booking-details"></dl>
+            <p id="booking-status" class="hint"></p>
+            <button id="confirm-booking" class="primary" type="button" hidden>
+              Confirm booking
+            </button>
+          </section>
+          <form id="chat-form">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              rows="3"
+              maxlength="4000"
+              placeholder="What does the document say about…"
+              required
+            ></textarea>
+            <div class="chat-actions">
+              <p id="chat-status" class="status" role="status"></p>
+              <button type="submit" class="primary">Send</button>
+            </div>
+          </form>
+        </section>
+      </div>
+      <details class="response">
+        <summary>Response</summary>
+        <pre id="raw-response">No requests yet.</pre>
+      </details>
+    </main>
+  </body>
+</html>

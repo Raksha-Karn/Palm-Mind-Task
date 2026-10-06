@@ -1,0 +1,43 @@
+[project]
+name = "palm-mind"
+version = "0.1.0"
+description = "Document RAG and conversational interview booking"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn[standard]>=0.34,<1",
+  "pydantic[email]>=2.10,<3",
+  "pydantic-settings>=2.7,<3",
+  "python-multipart>=0.0.20,<1",
+  "pypdf>=6,<7",
+  "google-genai>=1,<3",
+  "qdrant-client>=1.13,<2",
+  "sqlalchemy[asyncio]>=2.0,<3",
+  "asyncpg>=0.30,<1",
+  "alembic>=1.14,<2",
+  "redis>=6,<8",
+  "httpx>=0.28,<1",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11",
+    "mypy>=1.15",
+    "pytest>=8",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC", "N"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
